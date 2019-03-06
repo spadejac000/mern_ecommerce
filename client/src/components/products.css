@@ -1,0 +1,12 @@
+.products_layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 32px;
+}
+
+@media(max-width: 600px) {
+  .products_layout {
+    display: grid;
+    grid-template-columns: 100%;
+  }
+}

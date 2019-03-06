@@ -30,22 +30,20 @@ class Header extends Component {
 
   render() {
     return (
-      <Navbar color="light" light expand="md">
-        <div class="container">
+      <Navbar color="light" light expand="md" className="mb-5">
+        <div className="container">
           <NavbarBrand href="/">ECommerce</NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
                 <NavLink href="#">
-                  <i class="fas fa-shopping-cart"></i>
+                  <i className="fas fa-shopping-cart"></i>
                 </NavLink>
               </NavItem>
-              <NavItem>
-              </NavItem>
-              <UncontrolledDropdown nav inNavbar>
+              {/* <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle nav caret>
-                  <i class="fas fa-user"></i>
+                  <i className="fas fa-user"></i>
                 </DropdownToggle>
                 <DropdownMenu right>
                   <DropdownItem>
@@ -55,7 +53,7 @@ class Header extends Component {
                     Logout
                   </DropdownItem>
                 </DropdownMenu>
-              </UncontrolledDropdown>
+              </UncontrolledDropdown> */}
             </Nav>
           </Collapse>
         </div>

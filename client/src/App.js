@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import Header from './/components/Header';
-import Product from './/components/Product';
+import Products from './/components/Products';
 
 class App extends Component {
   render() {
@@ -10,7 +10,7 @@ class App extends Component {
       <div>
         <Header />
         <div className="container">
-          <Product />
+          <Products />
         </div>
       </div>
     );

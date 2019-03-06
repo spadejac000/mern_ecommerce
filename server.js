@@ -1,4 +1,5 @@
 const express = require('express');
+const request = require('request');
 const mongoose = require('mongoose');
 const path = require('path');
 
@@ -7,9 +8,12 @@ const app = express();
 // DB Config
 const db = require('./config/keys').mongoURI;
 
+// api
+const url = 'https://jsonplaceholder.typicode.com/photos?albumId=1'
+
 // Connect to MongoDB
 mongoose
-  .connect(db)
+  .connect(db, { useNewUrlParser: true })
   .then(() => console.log('mongodb connected'))
   .catch(err => console.log(err));
 
@@ -20,7 +24,12 @@ app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '../public'));
 
 app.get('/', (req, res) => {
-  res.render('index', {title: 'mern_ecommerce'});
+  request(url, (err, reponse, body) => {
+    products_json = JSON.parse(body);
+    console.log(products_json);
+
+    res.status(200).json(products_json);
+  })
 });
 
 
