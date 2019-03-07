@@ -18,22 +18,34 @@ mongoose
   .then(() => console.log('mongodb connected'))
   .catch(err => console.log(err));
 
-app.get('/', (req, res) => {
-  request(url, (err, reponse, body) => {
-    products_json = JSON.parse(body);
-    console.log(products_json);
+// Product Model
+const Product = require('./models/Product');
 
-    res.status(200).json(products_json);
-  })
+app.get('/', (req, res) => {
+ Product
+  .find()
+  .then(products => res.json(products))
 });
 
+app.post('/', (req, res) => {
+  const newProduct = new Product({
+    albumId: req.body.albumId,
+    id: req.body.id,
+    title: req.body.title,
+    thumbnailUrl: req.body.thumbnailUrl
+  });
+  newProduct
+    .save()
+    .then(product => res.json(product));
+ });
 
-app.get('/error', (req, res) => {
-  res.render('error');
-})
-
-app.get('/layout', (req, res) => {
-  res.render('layout');
+ // @route   DELETE /:id
+// @desc    Delete A Product
+// @access  Public
+app.delete('/:id', (req, res) => {
+  Product.findById(req.params.id)
+    .then(product => product.remove().then(() => res.json({success: true})))
+    .catch(err => res.status(404).json({success: false}));
 })
 
 const port = process.env.PORT || 5000;

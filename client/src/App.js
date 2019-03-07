@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Header from './components/Header';
 import Products from './components/Products';
+import Cart from './components/Cart';
 
 import {Provider} from 'react-redux';
 import store from './store';
@@ -14,6 +15,7 @@ class App extends Component {
       <Provider store={store}>
         <div className="App">
           <Header />
+          <Cart />
           <div className="container">
             <Products />
           </div>
