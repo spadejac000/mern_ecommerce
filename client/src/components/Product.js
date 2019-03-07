@@ -1,17 +1,34 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import { Card, CardImg, CardText, CardBody,
   CardTitle, CardSubtitle, Button } from 'reactstrap';
 
 
 class Product extends Component {
+  state = {
+    products: [],
+  }
+
+  componentDidMount() {
+    axios
+      .get('http://jsonplaceholder.typicode.com/photos?albumId=1')
+      .then(res => {
+        console.log(res.data)
+        this.setState({
+          products: res.data
+        })
+      })
+  }
+
   render() {
-    const {name, price, amount} = this.props.product;
+    const {products} = this.state;
+    console.log('product...', products)
     return (
       <Card className="product_card">
-        <CardImg top width="100%" src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180" alt="Card image cap" />
+        <CardImg top width="100%" src={products.url} alt="Card image cap" />
         <CardBody>
-          <CardTitle>{name}</CardTitle>
-          <CardSubtitle>{price}</CardSubtitle>
+          <CardTitle>{products.title}</CardTitle>
+          <CardSubtitle>{products.id}</CardSubtitle>
           <CardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CardText>
           <Button>Add To Cart</Button>
         </CardBody>

@@ -5,9 +5,6 @@ const path = require('path');
 
 const app = express();
 
-// DB Config
-const db = require('./config/keys').mongoURI;
-
 // api
 const url = 'https://jsonplaceholder.typicode.com/photos?albumId=1'
 
