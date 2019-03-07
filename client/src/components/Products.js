@@ -1,35 +1,21 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import Product from './Product';
 import './products.css';
 
 class Products extends Component {
   state = {
-    products: [
-      {
-        name: 'belt',
-        price: '$20',
-        amount: 89,
-        id: 1
-      },
-      {
-        name: 'restaurant linin',
-        price: '$20000',
-        amount: 0,
-        id: 2
-      },
-      {
-        name: 'soldier',
-        price: '$6.99',
-        amount: 29,
-        id: 3
-      },
-      {
-        name: 'shoelace',
-        price: '$20',
-        amount: 1000,
-        id: 4
-      }
-    ]
+    products: [],
+  }
+
+  componentDidMount() {
+    axios
+      .get('http://jsonplaceholder.typicode.com/photos?albumId=1')
+      .then(res => {
+        this.setState({
+          products: res.data.slice(0, 7)
+        })
+      })
   }
 
   render() {
