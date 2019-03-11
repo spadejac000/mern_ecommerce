@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors')
 const request = require('request');
 const mongoose = require('mongoose');
 const path = require('path');
@@ -8,6 +9,7 @@ const app = express();
 
 // bodyparser middleware
 app.use(bodyParser.json());
+app.use(cors());
 
 // db config
 const db = require('./config/keys').mongoURI;

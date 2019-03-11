@@ -21,15 +21,18 @@ class Products extends Component {
   render() {
     const {products} = this.state
     return (
-      <div className="products_layout">
-        <React.Fragment>
-          {products.map(product => (
-            <Product 
-              key={product.id}
-              product={product} 
-            />
-          ))}
-        </React.Fragment>
+      <div>
+        <h1 className="text-center">Products</h1>
+        <div className="products_layout">
+          <React.Fragment>
+            {products.map(product => (
+              <Product 
+                key={product.id}
+                product={product} 
+              />
+            ))}
+          </React.Fragment>
+        </div>
       </div>
     )
   }

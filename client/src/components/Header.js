@@ -6,11 +6,9 @@ import {
   NavbarBrand,
   Nav,
   NavItem,
-  NavLink,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem } from 'reactstrap';
+  // NavLink
+} from 'reactstrap';
+  import {NavLink as Link} from 'react-router-dom';
 
 class Header extends Component {
   constructor(props) {
@@ -37,23 +35,19 @@ class Header extends Component {
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink href="#">
-                  <i className="fas fa-shopping-cart"></i>
-                </NavLink>
+                <Link to="/" >
+                  {/* <NavLink> */}
+                    Shop
+                  {/* </NavLink> */}
+                </Link>
               </NavItem>
-              {/* <UncontrolledDropdown nav inNavbar>
-                <DropdownToggle nav caret>
-                  <i className="fas fa-user"></i>
-                </DropdownToggle>
-                <DropdownMenu right>
-                  <DropdownItem>
-                    User Account
-                  </DropdownItem>
-                  <DropdownItem>
-                    Logout
-                  </DropdownItem>
-                </DropdownMenu>
-              </UncontrolledDropdown> */}
+              <NavItem>
+                <Link to="/cart">
+                  {/* <NavLink> */}
+                    <i className="fas fa-shopping-cart"></i>
+                  {/* </NavLink> */}
+                </Link>
+              </NavItem>
             </Nav>
           </Collapse>
         </div>
